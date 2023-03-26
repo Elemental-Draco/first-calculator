@@ -16,3 +16,51 @@ html {
   font-size: 16px;
   background-color: var(--gray);
 }
+
+.calculator {
+  margin: 10% auto;
+  display: grid;
+  width: 600px;
+  height: 800px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  border: 1px black solid;
+}
+
+.displayInput {
+  grid-column-start: span 4;
+  background-color: var(--teal);
+  text-align: right;
+  padding-top: 7%;
+  padding-right: 10px;
+}
+
+.displayInput,
+button {
+  font-size: 3rem;
+  border: solid 1px black;
+}
+
+.operators,
+#equals,
+#decimal,
+#zero,
+#delete,
+#clear {
+  background-color: var(--peach);
+  color: black;
+}
+
+.numbers {
+  background-color: var(--teal);
+  color: white;
+}
+
+#delete,
+#clear {
+  grid-column-start: span 2;
+}
+
+button:hover {
+  opacity: 0.5;
+}
