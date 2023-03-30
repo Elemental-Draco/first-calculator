@@ -44,17 +44,26 @@ operators.forEach((sign) => {
     ) {
       display.innerText += event.target.innerText;
     } else if (/[+\-\/X]/.test(display.innerText)) {
+      let positionOfOperator = display.innerText.search(/[+\-\/X]/);
+      firstValue = display.innerText.slice(0, positionOfOperator);
+      secondValue = display.innerText.slice(positionOfOperator + 1);
+      operationSign = display.innerText.charAt(positionOfOperator);
+
+      if (compute(firstValue, operationSign, secondValue) !== undefined) {
+        display.innerText =
+          compute(firstValue, operationSign, secondValue) +
+          event.target.innerText;
+      } else if (operationSign == "/" && secondValue == 0) {
+        display.innerText = "self destruct";
+      } //else {
+      //   display.innerText = "0";
+      // }
     }
   });
 });
 // del key done
 del.addEventListener("click", () => {
-  // if (
-  //   !isNaN(display.innerText.charAt(display.innerText.length - 1)) ||
-  //   display.innerText.charAt(display.innerText.length - 1) === "."
-  // ) {
   display.innerText = display.innerText.slice(0, -1);
-  // }
 });
 
 // Clear button done
@@ -76,5 +85,12 @@ equals.addEventListener("click", (event) => {
   firstValue = display.innerText.slice(0, positionOfOperator);
   secondValue = display.innerText.slice(positionOfOperator + 1);
   operationSign = display.innerText.charAt(positionOfOperator);
-  display.innerText = compute(firstValue, operationSign, secondValue);
+
+  if (compute(firstValue, operationSign, secondValue) !== undefined) {
+    display.innerText = compute(firstValue, operationSign, secondValue);
+  } else if (operationSign == "/" && secondValue == 0) {
+    display.innerText = "self destruct";
+  } else {
+    return;
+  }
 });
