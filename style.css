@@ -20,7 +20,8 @@ html {
 .calculator {
   margin: 10% auto;
   display: grid;
-  width: 600px;
+  width: 60%;
+  min-width: 400px;
   height: 800px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
